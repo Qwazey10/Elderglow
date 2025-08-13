@@ -1,0 +1,21 @@
+
+
+Elderglow Race Information
+
+RaceID is how we determine which display race the character will have. Its stored in the Playerstate which is 
+Source/Elderglow/Character/ElderglowPlayerstate.h 
+
+When the player logs in, the dedicated server will connect to the Redis Database  which will store character information. 
+
+RaceIDs:
+
+0 = Undefined, this will mean that there was an error retrieving the RaceID from the server. 
+
+Human = 1;
+
+Woodelf = 2;
+
+Ogre = 3;
+
+ElderglowCharacter.cpp is where we get the RaceID and setup which DataAsset we will use, Then set the values of the
+corresponding meshes, then bind them to the master pose component. 
