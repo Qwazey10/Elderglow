@@ -3,6 +3,8 @@
 
 #include "Character/LivingBeingCharacterBase.h"
 
+#include "Character/ElderglowPlayerstate.h"
+
 
 // Sets default values
 ALivingBeingCharacterBase::ALivingBeingCharacterBase()
@@ -10,6 +12,8 @@ ALivingBeingCharacterBase::ALivingBeingCharacterBase()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	ElderglowNPCAbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>("AbilitySystemComponent");
+	
 }
 
 // Called when the game starts or when spawned
@@ -33,3 +37,16 @@ void ALivingBeingCharacterBase::SetupPlayerInputComponent(UInputComponent* Playe
 
 }
 
+UAbilitySystemComponent* ALivingBeingCharacterBase::GetElderglowAbilitySystemComponent()
+{
+	
+	if (IsValid(this) && this->ActorHasTag("Player"))
+	{
+		AElderglowPlayerstate* ElderglowPlayerStateRef = Cast<AElderglowPlayerstate>(GetPlayerState());
+		if (IsValid(ElderglowPlayerStateRef))
+		{
+			return ElderglowPlayerStateRef->PlayerAbilitySystemComponent;
+		}
+	}
+	return ElderglowNPCAbilitySystemComponent;
+}
