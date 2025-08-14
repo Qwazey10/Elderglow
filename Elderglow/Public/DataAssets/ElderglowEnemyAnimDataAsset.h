@@ -3,18 +3,20 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Engine/GameInstance.h"
-#include "MyGameInstance.generated.h"
+#include "Engine/DataAsset.h"
+#include "ElderglowEnemyAnimDataAsset.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class ELDERGLOW_API UMyGameInstance : public UGameInstance
+class ELDERGLOW_API UElderglowEnemyAnimDataAsset : public UPrimaryDataAsset
 {
 	GENERATED_BODY()
 	
-	
+public:
+
+
 	
 	
 };
