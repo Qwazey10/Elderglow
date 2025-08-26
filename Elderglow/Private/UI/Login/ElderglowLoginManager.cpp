@@ -92,6 +92,34 @@ void AElderglowLoginManager::LoginImGuiMenuDisplay()
 			}	
 		}
 	}
+	ImGui::Separator();
+	
+	//Attempt to probe the redis client manager
+	UWorld* World = GetWorld();
+	if (IsValid(World))
+	{
+		UElderglowGameInstance* ElderglowGI = GlobalUtils::GetElderglowGameInstance(World);
+		if (IsValid(ElderglowGI))
+		{
+			if (ElderglowGI->ElderglowRedisClientManager)
+			{
+				ImGui::Text("Client Manager Object -- IP Address: %s", TCHAR_TO_UTF8(*ElderglowGI->ElderglowRedisClientManager->IP));
+				ImGui::Text("Client Manager Object -- Port: %d", ElderglowGI->ElderglowRedisClientManager->Port);
+				ImGui::Text("Client Manager Object -- Password: %s", TCHAR_TO_UTF8(*ElderglowGI->ElderglowRedisClientManager->Password));
+				ImGui::Separator();
+				if (ImGui::Button("Attempt Connection"))
+				{
+					FRedisTaskDoneDelegate Delegate;
+					Delegate.BindDynamic(ElderglowGI, &UElderglowGameInstance::PongFromRedisServer);
+					ElderglowGI->ElderglowRedisClientManager->Ping(Delegate);
+				}
+			}
+			else
+			{
+				ImGui::Text("Client Manager Object -- Is Not Valid");
+			}
+		}
+	}
 	
 	ImGui::End();
 }

@@ -30,7 +30,6 @@ void UElderglowGameInstance::ConnectToRedisServer(FString RedisIPAddress, int Re
 		if (GEngine)
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Green,"Elderglow Redis Client Manage is Valid");
-			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Green,"Elderglow Redis Client Manage is Valid");
 			PingRedisServer();
 		}
 	}
@@ -40,7 +39,8 @@ void UElderglowGameInstance::ConnectToRedisServer(FString RedisIPAddress, int Re
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red," Redis Client Manage is NULL, Attempting New Construct");
 			ElderglowRedisClientManager = URedisClient::NewRedisClient(MaxNum, RedisIPAddress,RedisPort,RedisPassword);
-			
+			//eldadmin -- elderglowadmin
+			//admin -- elderglowadmin
 		}
 	}
 }
