@@ -32,7 +32,5 @@ public:
 	//Character Access Flags, This is where Perm or Temp Access Flags will be stored on the Character.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Quest Flags")
 	TArray<FString> CharacterAccessFlags;
-
-	
 	
 };

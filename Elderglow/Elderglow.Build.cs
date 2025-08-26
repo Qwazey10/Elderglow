@@ -18,6 +18,8 @@ public class Elderglow : ModuleRules
 			"GameplayAbilities",
 			"GameplayTasks",
 			"ImGui",
+			"NanoRedisClient",
+			"FMODStudio"
 		});
 
 		
